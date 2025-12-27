@@ -15,14 +15,14 @@
   <body>
     <button class="add-new-book">Add New Book</button>
     <dialog class="modal">
-      <form>
+      <form novalidate>
         <div class="form-row">
           <label for="title">Book Title :</label>
           <input type="text" id="title" />
         </div>
         <div class="form-row">
           <label for="author">Author Name :</label>
-          <input type="text" id="author" />
+          <input type="text" id="author" required />
         </div>
         <div class="form-row">
           <label for="pages">Pages :</label>

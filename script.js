@@ -62,19 +62,28 @@ addBook.addEventListener("click", () => {
   modal.showModal();
 });
 
+const authorInput = document.querySelector("#author");
+authorInput.addEventListener("input", () => authorInput.setCustomValidity(""));
+
 const form_submit_button = document.querySelector(".form-submit-button");
 form_submit_button.addEventListener("click", (e) => {
   e.preventDefault();
-  const title = document.querySelector("#title");
-  const author = document.querySelector("#author");
-  const pages = document.querySelector("#pages");
-  const read = document.querySelector("#read");
+  if (authorInput.validity.valueMissing) {
+    authorInput.setCustomValidity("The author name must be filled!");
+    authorInput.reportValidity();
+  } else {
+    authorInput.setCustomValidity("");
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
+    const read = document.querySelector("#read");
 
-  addBookToLibrary(title.value, author.value, pages.value, read.checked);
+    addBookToLibrary(title.value, author.value, pages.value, read.checked);
 
-  const form = document.querySelector("form");
-  form.reset();
-  modal.close();
+    const form = document.querySelector("form");
+    form.reset();
+    modal.close();
+  }
 });
 
 display.addEventListener("click", (e) => {
